@@ -1,11 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import { Skeleton } from '@/app/components/ui/skeleton';
 import MaxWidthWrapper from '@/app/components/ui/MaxWidthWrapper';
-import { buttonVariants } from '@/app/components/ui/button';
-import { Button } from '@/app/components/ui/button';
+import Image from 'next/image'; // Import the Image component
 
 interface Article {
   title: string;
@@ -68,9 +66,12 @@ export default function NewsPage() {
                 article.url && article.url.startsWith('http') ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'
               }`}
             >
-              <img
+              {/* Use the Image component */}
+              <Image
                 src={article.urlToImage || '/default-news.jpg'}
                 alt={article.title}
+                width={600} // Set appropriate width and height
+                height={240} // Adjust height as needed
                 className="w-full h-40 object-cover rounded-md mb-4"
               />
               <h3 className="text-lg font-semibold text-white">{article.title}</h3>

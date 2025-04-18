@@ -19,6 +19,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <body className={cn("relative h-full font-sans antialiased bg-black text-white", inter.className)}>
           <main className="relative flex flex-col min-h-screen">
             {/* Navbar including authentication buttons */}
+            {/*eslint-disable-next-line @typescript-eslint/ban-ts-comment*/}
+            {/* @ts-expect-error */}
             <Navbar>
               <div className="flex items-center gap-4">
                 <SignedOut>

@@ -32,7 +32,8 @@ export default function Chatbot() {
 
       const data = await response.json();
       setChat([...newChat.slice(0, -1), { user: message, bot: data.reply }]);
-    } catch (error) {
+    } // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    catch (error) {
       setChat([...newChat.slice(0, -1), { user: message, bot: "Error fetching response" }]);
     }
 

@@ -1,11 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
+
 import MaxWidthWrapper from "../app/components/ui/MaxWidthWrapper";
 import { Button, buttonVariants } from "../app/components/ui/button";
 import { ShieldCheck, Lock, AlertTriangle } from "lucide-react";
 import Link from "next/link";
 import { GoogleGeminiEffect } from "./components/google-gemini-effect";
-import { motion, useMotionValue } from "framer-motion";
+import {  useMotionValue } from "framer-motion";
 
 
 

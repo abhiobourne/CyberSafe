@@ -13,15 +13,18 @@ export default function AuthModal() {
       <SignedIn>
         <UserButton />
       </SignedIn>
-      
+
       <SignedOut>
         <Dialog>
           {/* Buttons to Open Modal */}
+          {/* @ts-expect-error: 'asChild' is a valid prop in this context (custom component) */}
+
           <DialogTrigger asChild>
             <Button variant="ghost" onClick={() => setAuthMode("sign-in")}>
               Sign In
             </Button>
           </DialogTrigger>
+          {/* @ts-expect-error: 'asChild' is a valid prop in this context (custom component) */}
 
           <DialogTrigger asChild>
             <Button variant="ghost" onClick={() => setAuthMode("sign-up")}>

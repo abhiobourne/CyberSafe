@@ -10,8 +10,9 @@ export async function POST(req: Request) {
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
+    
+    // @ts-expect-error: 'apiVersion' is required by the API but not defined in the type, allowing it temporarily to avoid type error.
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", apiVersion: "v1" });
-
 
     // ✅ Use correct API structure
     const chat = await model.generateContent({

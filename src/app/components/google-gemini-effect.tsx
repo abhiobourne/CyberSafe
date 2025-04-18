@@ -4,19 +4,15 @@ import { motion, MotionValue } from "framer-motion";
 import React from "react";
 
 const transition = {
-  duration: 0,
+  duration: 0.5, // Set duration for transition if you want an animation effect
   ease: "linear",
 };
 
 export const GoogleGeminiEffect = ({
   pathLengths = [],
-  title,
-  description,
   className,
 }: {
   pathLengths: MotionValue[];
-  title?: string;
-  description?: string;
   className?: string;
 }) => {
   if (pathLengths.length === 0) return null; // Prevent error if pathLengths is empty

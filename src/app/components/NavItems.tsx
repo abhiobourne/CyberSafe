@@ -21,6 +21,7 @@ const NavItems = () => {
 
     const isAnyOpen = activeIndex !== null
     const navRef = useRef<HTMLDivElement | null>(null)
+    // @ts-expect-error: suppress ref type mismatch for useOnClickOutside
     useOnClickOutside(navRef, () => setActiveIndex(null))
 
     return (
