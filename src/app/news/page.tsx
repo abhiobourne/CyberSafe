@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Skeleton } from '@/app/components/ui/skeleton';
 import MaxWidthWrapper from '@/app/components/ui/MaxWidthWrapper';
-import Image from 'next/image'; // Import the Image component
+import Image from 'next/image';
 
 interface Article {
   title: string;
@@ -22,11 +22,16 @@ export default function NewsPage() {
       try {
         const response = await fetch(`/api/news`);
         const data = await response.json();
-        setNews(data.articles); // Show all articles
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching news:', error);
+
+        if (!data.articles || !Array.isArray(data.articles)) {
+          throw new Error('Invalid data format');
+        }
+
+        setNews(data.articles);
+      } catch (err) {
+        console.error('Error fetching news:', err);
         setError(true);
+      } finally {
         setLoading(false);
       }
     }
@@ -45,7 +50,7 @@ export default function NewsPage() {
         </div>
       </MaxWidthWrapper>
 
-      {/* News Section */}
+      {/* Content */}
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[...Array(6)].map((_, index) => (
@@ -53,25 +58,26 @@ export default function NewsPage() {
           ))}
         </div>
       ) : error ? (
-        <p className="text-red-500 text-center">Failed to load news. Try again later.</p>
+        <p className="text-red-500 text-center">🚫 Failed to load news. Please try again later.</p>
+      ) : news.length === 0 ? (
+        <p className="text-yellow-500 text-center">⚠️ No news articles available.</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {news.map((article, index) => (
             <a
               key={index}
-              href={article.url && article.url.startsWith('http') ? article.url : '#'}
-              target={article.url && article.url.startsWith('http') ? '_blank' : '_self'}
+              href={article.url?.startsWith('http') ? article.url : '#'}
+              target="_blank"
               rel="noopener noreferrer"
               className={`bg-gray-800 rounded-lg p-4 hover:shadow-lg transition block ${
-                article.url && article.url.startsWith('http') ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'
+                article.url?.startsWith('http') ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'
               }`}
             >
-              {/* Use the Image component */}
               <Image
                 src={article.urlToImage || '/default-news.jpg'}
                 alt={article.title}
-                width={600} // Set appropriate width and height
-                height={240} // Adjust height as needed
+                width={600}
+                height={240}
                 className="w-full h-40 object-cover rounded-md mb-4"
               />
               <h3 className="text-lg font-semibold text-white">{article.title}</h3>
