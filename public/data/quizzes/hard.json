@@ -1,0 +1,102 @@
+[
+  {
+    "question": "What does XAI aim to improve in AI systems?",
+    "options": [
+      "Speed only",
+      "Explainability and transparency",
+      "Data storage",
+      "Unknowns"
+    ],
+    "answer": "Explainability and transparency"
+  },
+  {
+    "question": "Why is explainability critical in cybersecurity?",
+    "options": [
+      "To confuse operators",
+      "To trace AI decisions",
+      "To slow detection",
+      "To enforce blackbox systems"
+    ],
+    "answer": "To trace AI decisions"
+  },
+  {
+    "question": "Which challenge is associated with XAI?",
+    "options": [
+      "Too much transparency",
+      "Difficulty in interpreting models",
+      "Unwanted speed",
+      "No training data"
+    ],
+    "answer": "Difficulty in interpreting models"
+  },
+  {
+    "question": "XAI helps in cybersecurity by:",
+    "options": [
+      "Hiding alerts",
+      "Making attacks undetectable",
+      "Clarifying automated alerts",
+      "Slowing defenses"
+    ],
+    "answer": "Clarifying automated alerts"
+  },
+  {
+    "question": "Which area does XAI NOT address?",
+    "options": [
+      "Model transparency",
+      "Bias detection",
+      "Network traffic speed",
+      "Decision traceability"
+    ],
+    "answer": "Network traffic speed"
+  },
+  {
+    "question": "What is a key open issue in XAI research?",
+    "options": [
+      "Fully automated proofs",
+      "Rigorous evaluation frameworks",
+      "Faster computation",
+      "More data"
+    ],
+    "answer": "Rigorous evaluation frameworks"
+  },
+  {
+    "question": "Which domain benefits from XAI in cybersecurity?",
+    "options": [
+      "Explainable incident analysis",
+      "Anonymous logs",
+      "Uninterpretable alerts",
+      "Offline backups"
+    ],
+    "answer": "Explainable incident analysis"
+  },
+  {
+    "question": "Explainable AI enhances _______ in cybersecurity.",
+    "options": [
+      "Opacity",
+      "Accountability",
+      "Randomness",
+      "Noise"
+    ],
+    "answer": "Accountability"
+  },
+  {
+    "question": "XAI can help detect _______ in models.",
+    "options": [
+      "Speed flaws",
+      "Bias and errors",
+      "Data storage issues",
+      "Firewall misconfig"
+    ],
+    "answer": "Bias and errors"
+  },
+  {
+    "question": "Future directions include integrating XAI with _______.",
+    "options": [
+      "Opaque systems",
+      "Human analysts",
+      "Hardware only",
+      "No one"
+    ],
+    "answer": "Human analysts"
+  }
+]

@@ -1,0 +1,79 @@
+[
+  {
+    "title": "Cyber security: State of the art, challenges and future directions",
+    "summary": "This comprehensive article explores the evolution of cybersecurity, identifies present-day vulnerabilities, and examines upcoming threats like quantum computing. It provides a roadmap for future research and real-world defense strategies.",
+    "source": "ScienceDirect",
+    "url": "https://www.sciencedirect.com/science/article/pii/S2772918423000188",
+    "image": "https://ars.els-cdn.com/content/image/1-s2.0-S2772918423000188-fx1.jpg"
+  },
+  {
+    "title": "Latest Cybersecurity News and Threat Intelligence",
+    "summary": "Stay up-to-date with daily news on cyber attacks, data breaches, and new vulnerabilities across the globe. This site aggregates key cyber threat information for both professionals and the public.",
+    "source": "Cyware Social",
+    "url": "https://social.cyware.com/cyber-security-news-articles",
+    "image": "https://cdn.cyware.com/images/logo/logo-cyware-news-share.png"
+  },
+  {
+    "title": "Introduction to Cyber Security for Beginners",
+    "summary": "This beginner-friendly article explains the basics of cybersecurity, including types of attacks, the CIA triad, and common prevention tools. Ideal for individuals starting their cybersecurity journey.",
+    "source": "Simplilearn",
+    "url": "https://www.simplilearn.com/introduction-to-cyber-security-article",
+    "image": "https://www.simplilearn.com/ice9/free_resources_article_thumb/Introduction_to_Cyber_Security.jpg"
+  },
+  {
+    "title": "Cyber Magazine: Industry Reports and Insights",
+    "summary": "Explore curated articles and insights on cybersecurity trends, expert interviews, and industry solutions. Includes coverage of enterprise-level strategies and tech innovations.",
+    "source": "Cyber Magazine",
+    "url": "https://cybermagazine.com/articles",
+    "image": "https://cybermagazine.com/images/site/logos/logo-light.svg"
+  },
+  {
+    "title": "The Hacker News – Cybersecurity News Platform",
+    "summary": "A leading source for breaking cybersecurity news, ethical hacking tutorials, malware alerts, and data breach updates. Trusted by IT professionals and researchers.",
+    "source": "The Hacker News",
+    "url": "https://thehackernews.com/",
+    "image": "https://img.thehackernews.com/thn_logo_v2.png"
+  },
+  {
+    "title": "Forbes Cybersecurity Insights",
+    "summary": "Timely expert opinions, news, and cybersecurity leadership strategies from Forbes. Topics range from data protection to enterprise risk management.",
+    "source": "Forbes",
+    "url": "https://www.forbes.com/cybersecurity/",
+    "image": "https://imageio.forbes.com/specials-images/imageserve/62b47f885d24e5f579bfc347/0x0.jpg"
+  },
+  {
+    "title": "5 Must-Read Ransomware and Cybersecurity Articles",
+    "summary": "Gartner curates five essential reads on ransomware readiness, trends in cyber insurance, and emerging threats every organization must consider.",
+    "source": "Gartner",
+    "url": "https://www.gartner.com/smarterwithgartner/5-must-read-ransomware-and-cybersecurity-articles",
+    "image": "https://www.gartner.com/imagesrv/marketing/Gartner-logo.svg"
+  },
+  {
+    "title": "Cybersecurity News | Security Magazine",
+    "summary": "Security Magazine delivers daily updates on cybersecurity regulations, best practices, new technologies, and interviews with security professionals.",
+    "source": "Security Magazine",
+    "url": "https://www.securitymagazine.com/topics/2236-cybersecurity-news",
+    "image": "https://www.securitymagazine.com/ext/resources/static-pages/images/security-magazine-logo.png"
+  },
+  {
+    "title": "Cybersecurity Best Practices from CISA",
+    "summary": "The Cybersecurity and Infrastructure Security Agency (CISA) provides official guides, best practices, and toolkits to improve online safety for organizations and individuals.",
+    "source": "CISA",
+    "url": "https://www.cisa.gov/topics/cybersecurity-best-practices",
+    "image": "https://www.cisa.gov/themes/custom/cisa/logo.svg"
+  },
+  {
+    "title": "Top Cybersecurity Trends You Need to Know",
+    "summary": "Explore key cybersecurity trends shaping 2025, including zero trust architecture, AI-powered threats, and increased cloud security measures.",
+    "source": "Simplilearn",
+    "url": "https://www.simplilearn.com/top-cybersecurity-trends-article",
+    "image": "https://www.simplilearn.com/ice9/free_resources_article_thumb/Top_10_Cybersecurity_Trends.jpg"
+  },
+  {
+    "title": "Cybersecurity at IBM Think",
+    "summary": "IBM Think explores how cutting-edge technologies like quantum-safe cryptography and AI are transforming enterprise cybersecurity.",
+    "source": "IBM Think",
+    "url": "https://www.ibm.com/think/topics/cybersecurity",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg"
+  }
+]

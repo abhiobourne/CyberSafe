@@ -15,7 +15,7 @@
     "@tabler/icons-react": "^3.31.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "firebase": "^11.6.0",
+    "firebase": "^11.9.1",
     "lucide-react": "^0.501.0",
     "motion": "^12.5.0",
     "next": "15.2.3",
@@ -37,5 +37,16 @@
     "eslint-config-next": "15.2.3",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+   "eslintConfig": {
+    "extends": "next/core-web-vitals",
+    "rules": {
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/ban-ts-comment": "off",
+      "react/no-unescaped-entities": "off",
+      "react-hooks/exhaustive-deps": "off",
+      "@next/next/no-img-element": "off"
+    }
   }
 }

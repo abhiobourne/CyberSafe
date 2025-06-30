@@ -1,0 +1,102 @@
+[
+  {
+    "question": "What does 'cybersecurity' refer to?",
+    "options": [
+      "Physical protection of devices",
+      "Cloud computing services",
+      "Protection of systems, networks, and data",
+      "Internet speed optimization"
+    ],
+    "answer": "Protection of systems, networks, and data"
+  },
+  {
+    "question": "Which of the following is a type of cyberattack?",
+    "options": [
+      "Brute force attack",
+      "Budget optimization",
+      "Team collaboration",
+      "Password hint"
+    ],
+    "answer": "Brute force attack"
+  },
+  {
+    "question": "What is a firewall used for?",
+    "options": [
+      "Encrypting passwords",
+      "Filtering network traffic",
+      "Painting computer cases",
+      "Measuring bandwidth"
+    ],
+    "answer": "Filtering network traffic"
+  },
+  {
+    "question": "What makes a password strong?",
+    "options": [
+      "Your birthday",
+      "Simple letters",
+      "Long mix of letters, numbers, symbols",
+      "Username plus age"
+    ],
+    "answer": "Long mix of letters, numbers, symbols"
+  },
+  {
+    "question": "What is a phishing attack?",
+    "options": [
+      "Fishing in real life",
+      "Tricking users into revealing info",
+      "Removing malware",
+      "Network optimization"
+    ],
+    "answer": "Tricking users into revealing info"
+  },
+  {
+    "question": "What is malware?",
+    "options": [
+      "Legitimate software",
+      "Malicious software",
+      "A type of firewall",
+      "A network protocol"
+    ],
+    "answer": "Malicious software"
+  },
+  {
+    "question": "Which protocol is commonly used to secure data over the internet?",
+    "options": [
+      "HTTP",
+      "FTP",
+      "HTTPS",
+      "SMTP"
+    ],
+    "answer": "HTTPS"
+  },
+  {
+    "question": "What is the main goal of cybersecurity?",
+    "options": [
+      "Increase internet speed",
+      "Protect confidentiality, integrity, availability",
+      "Monitor hardware usage",
+      "Store data locally"
+    ],
+    "answer": "Protect confidentiality, integrity, availability"
+  },
+  {
+    "question": "What is penetration testing?",
+    "options": [
+      "Painting a computer room",
+      "Simulating attacks to find vulnerabilities",
+      "Rewriting software code",
+      "Developing mobile apps"
+    ],
+    "answer": "Simulating attacks to find vulnerabilities"
+  },
+  {
+    "question": "What is SQL injection?",
+    "options": [
+      "A database attack using malicious queries",
+      "An encryption method",
+      "A firewall setting",
+      "A physical connectivity issue"
+    ],
+    "answer": "A database attack using malicious queries"
+  }
+]

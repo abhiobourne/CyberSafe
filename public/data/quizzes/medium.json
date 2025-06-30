@@ -1,0 +1,102 @@
+[
+  {
+    "question": "Which method helps with cybersecurity knowledge retention?",
+    "options": [
+      "Passive reading",
+      "Hands-on practice",
+      "Ignoring tutorials",
+      "Skipping assessments"
+    ],
+    "answer": "Hands-on practice"
+  },
+  {
+    "question": "Why are projects important in cybersecurity learning?",
+    "options": [
+      "To distract learners",
+      "To test real-world application",
+      "To reduce study time",
+      "To delete vulnerabilities"
+    ],
+    "answer": "To test real-world application"
+  },
+  {
+    "question": "What is a benefit of lifelong learning?",
+    "options": [
+      "Quick certification",
+      "Deep understanding and growth",
+      "Guaranteed job placement",
+      "No need to study"
+    ],
+    "answer": "Deep understanding and growth"
+  },
+  {
+    "question": "What type of learning helps retention?",
+    "options": [
+      "Memorization only",
+      "Active engagement",
+      "Sleeping during tutorials",
+      "Avoiding notes"
+    ],
+    "answer": "Active engagement"
+  },
+  {
+    "question": "Why avoid memorizing only for exams?",
+    "options": [
+      "It supports better understanding",
+      "It helps long-term recall",
+      "It reduces real-world problem-solving",
+      "Both A and B"
+    ],
+    "answer": "Both A and B"
+  },
+  {
+    "question": "What’s one way to improve knowledge retention?",
+    "options": [
+      "Learn unrelated topics",
+      "Take notes and apply",
+      "Use only videos",
+      "Never revisit content"
+    ],
+    "answer": "Take notes and apply"
+  },
+  {
+    "question": "What role does testing yourself play?",
+    "options": [
+      "Wastes time",
+      "Consolidates memory and skills",
+      "Harms confidence",
+      "Is unnecessary"
+    ],
+    "answer": "Consolidates memory and skills"
+  },
+  {
+    "question": "Why are projects fun learning tools?",
+    "options": [
+      "They waste time",
+      "They allow applying knowledge",
+      "They should be avoided",
+      "They are theoretical only"
+    ],
+    "answer": "They allow applying knowledge"
+  },
+  {
+    "question": "Sara Sheon suggests focusing on learning what?",
+    "options": [
+      "Governance only",
+      "Foundations and interests",
+      "Funny memes",
+      "Random hacking tips"
+    ],
+    "answer": "Foundations and interests"
+  },
+  {
+    "question": "What is key to cybersecurity success?",
+    "options": [
+      "Giving up early",
+      "Structured practice and projects",
+      "Pure memorization",
+      "Ignoring feedback"
+    ],
+    "answer": "Structured practice and projects"
+  }
+]
