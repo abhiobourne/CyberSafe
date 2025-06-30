@@ -10,21 +10,22 @@ type Question = {
 };
 
 type QuizProps = {
-  questions?: Question[]; // Make it optional temporarily
+  questions: Question[];
   type: "pre" | "post";
+  onSubmit?: (score: number) => void; // external handler
 };
 
-const QuizComponent = ({ questions = [], type }: QuizProps) => {
+const QuizComponent = ({ questions = [], type, onSubmit }: QuizProps) => {
   const [userAnswers, setUserAnswers] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [score, setScore] = useState(0);
   const router = useRouter();
 
   useEffect(() => {
-  if (questions.length > 0 && userAnswers.length === 0) {
-    setUserAnswers(Array(questions.length).fill(""));
-  }
-}, [questions, userAnswers.length]);
+    if (questions.length > 0 && userAnswers.length === 0) {
+      setUserAnswers(Array(questions.length).fill(""));
+    }
+  }, [questions, userAnswers.length]);
 
   const handleSelect = (qIndex: number, option: string) => {
     const newAnswers = [...userAnswers];
@@ -45,8 +46,16 @@ const QuizComponent = ({ questions = [], type }: QuizProps) => {
     setScore(result);
     setSubmitted(true);
 
+    // 🔁 Trigger external handler if provided
+    if (onSubmit) {
+      onSubmit(result);
+      return;
+    }
+
+    // 🧠 Default internal logic
     if (type === "pre") {
       localStorage.setItem("pre_score", result.toString());
+
       setTimeout(() => {
         if (result < 60) {
           router.push("/article");
@@ -57,7 +66,7 @@ const QuizComponent = ({ questions = [], type }: QuizProps) => {
     }
 
     if (type === "post") {
-      const pre = Number(localStorage.getItem("pre_score"));
+      const pre = Number(localStorage.getItem("pre_score") || 0);
       const improvement = result - pre;
       alert(`You improved by ${improvement}%`);
     }

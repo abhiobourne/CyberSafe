@@ -30,9 +30,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             inter.className
           )}
         >
-          {/* Navbar */}
-          {/* @ts-expect-error */}
+          {/* @ts-expect-error - Navbar expects props but none are required here */}
           <Navbar>
+
             <div className="flex items-center gap-4">
               <SignedOut>
                 <SignInButton />

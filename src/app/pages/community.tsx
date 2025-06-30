@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import QuizComponent from "../components/QuizComponent";
 
 type Question = {
@@ -11,7 +10,6 @@ type Question = {
 };
 
 export default function PreAssessmentPage() {
-  const router = useRouter();
   const [difficulty, setDifficulty] = useState<"easy" | "medium" | "hard" | null>(null);
   const [questions, setQuestions] = useState<Question[] | null>(null);
 
@@ -19,16 +17,6 @@ export default function PreAssessmentPage() {
     const res = await fetch(`/data/quizzes/${level}.json`);
     const data = await res.json();
     setQuestions(data);
-  };
-
-  const handleSubmit = (score: number) => {
-    localStorage.setItem("pre_score", score.toString());
-
-    if (score < 6 && difficulty) {
-      router.push(`/articles/${difficulty}`);
-    } else {
-      router.push("/post-assessment");
-    }
   };
 
   const handleDifficultySelect = (level: "easy" | "medium" | "hard") => {
@@ -55,11 +43,7 @@ export default function PreAssessmentPage() {
       )}
 
       {difficulty && questions && (
-        <QuizComponent
-          title={`Pre-Assessment (${difficulty})`}
-          questions={questions}
-          onSubmit={handleSubmit}
-        />
+        <QuizComponent type="pre" questions={questions} />
       )}
     </div>
   );

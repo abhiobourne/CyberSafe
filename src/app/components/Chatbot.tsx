@@ -39,6 +39,7 @@ export default function Chatbot() {
         ...newChat.slice(0, -1),
         { user: message, bot: formatText(data.reply) },
       ]);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setChat([
         ...newChat.slice(0, -1),

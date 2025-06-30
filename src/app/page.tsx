@@ -1,7 +1,7 @@
 "use client";
 
 import MaxWidthWrapper from "../app/components/ui/MaxWidthWrapper";
-import { Button, buttonVariants } from "../app/components/ui/button";
+import { Button } from "../app/components/ui/button";
 import { ShieldCheck, Lock, AlertTriangle } from "lucide-react";
 import Link from "next/link";
 import { GoogleGeminiEffect } from "./components/google-gemini-effect";
@@ -120,6 +120,7 @@ export default function Home() {
             </ul>
           </div>
           <div className="flex justify-center">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="https://cybersafetyproject.com/wp-content/uploads/2024/08/Online-Safety-Educator-Hub.svg"
               alt="Online Safety Educator Hub"

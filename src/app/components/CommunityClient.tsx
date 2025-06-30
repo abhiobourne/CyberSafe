@@ -9,10 +9,11 @@ import {
   orderBy,
   onSnapshot,
   serverTimestamp,
+  Timestamp,
 } from "firebase/firestore";
 import { Experience } from "@/types/experience";
 import { FaFilter, FaTimes } from "react-icons/fa";
-import MaxWidthWrapper from "../components/ui/MaxWidthWrapper";
+import MaxWidthWrapper from "./ui/MaxWidthWrapper";
 import { Loader2 } from "lucide-react";
 
 export default function CommunityClient() {
@@ -23,13 +24,15 @@ export default function CommunityClient() {
     "Data Breach",
     "Other",
   ];
-  const [formData, setFormData] = useState<Experience>({
+
+  const [formData, setFormData] = useState<Omit<Experience, "id">>({
     name: "",
     email: "",
     experience: "",
     category: "Phishing",
-    createdAt: new Date(),
+    createdAt: Timestamp.now(),
   });
+
   const [experiences, setExperiences] = useState<Experience[]>([]);
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -43,8 +46,8 @@ export default function CommunityClient() {
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const experiencesList: Experience[] = snapshot.docs.map((doc) => ({
         id: doc.id,
-        ...(doc.data() as Experience),
-      }));
+        ...doc.data(),
+      })) as Experience[];
       setExperiences(experiencesList);
     });
     return () => unsubscribe();
@@ -71,7 +74,7 @@ export default function CommunityClient() {
         email: "",
         experience: "",
         category: "Phishing",
-        createdAt: new Date(),
+        createdAt: Timestamp.now(),
       });
     } catch (error) {
       console.error("Error submitting experience:", error);
@@ -214,10 +217,8 @@ export default function CommunityClient() {
             <p className="text-sm font-bold text-blue-600">{exp.category}</p>
             <p className="mt-2 text-sm leading-relaxed">{exp.experience}</p>
             <p className="text-xs text-gray-400 mt-2">
-              {exp.createdAt && (exp.createdAt as any).seconds
-                ? `Posted On - ${new Date(
-                    (exp.createdAt as any).seconds * 1000
-                  ).toLocaleString()}`
+              {exp.createdAt instanceof Timestamp
+                ? `Posted On - ${exp.createdAt.toDate().toLocaleString()}`
                 : "Posted On - just now"}
             </p>
           </div>

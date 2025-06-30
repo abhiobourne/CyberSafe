@@ -1,8 +1,8 @@
 "use client";
 
 import MaxWidthWrapper from "../components/ui/MaxWidthWrapper";
-
 import { useMotionValue } from "framer-motion";
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const usePathLengths = () => [
   useMotionValue(0),
@@ -13,12 +13,11 @@ const usePathLengths = () => [
 ];
 
 export default function AboutUsPage() {
-  const imageUrl = "https://cybersafetyproject.com/wp-content/uploads/2024/08/Online-Safety-for-Families.png";
+  const imageUrl =
+    "https://cybersafetyproject.com/wp-content/uploads/2024/08/Online-Safety-for-Families.png";
 
   return (
     <div className="relative w-full min-h-screen overflow-hidden">
-
-
       {/* Hero + Two Columns Intro */}
       <section className="relative z-10 py-20 bg-gradient-to-b from-teal-400 via-blue-600 to-indigo-800">
         <MaxWidthWrapper>
@@ -27,7 +26,12 @@ export default function AboutUsPage() {
               <h1 className="text-5xl font-bold mb-4">About Us</h1>
             </div>
             <div className="overflow-hidden flex justify-center">
-              <img src={imageUrl} alt="Online Safety For Families" className="object-contain max-w-full h-auto rounded-lg shadow-lg" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={imageUrl}
+                alt="Online Safety For Families"
+                className="object-contain max-w-full h-auto rounded-lg shadow-lg"
+              />
             </div>
           </div>
         </MaxWidthWrapper>
@@ -40,9 +44,9 @@ export default function AboutUsPage() {
           <p className="text-gray-700 mb-4">
             Founded in 2023, CyberSafe was created after witnessing the growing cyber risks to children and families online. We believe everyone deserves to feel secure on the internet.
           </p>
-              <p className=" mb-6 text-gray-700">
-                At CyberSafe, we're driven by a mission to empower families, educators, and individuals to stay safe online. Through engaging resources, expert guidance, and community-powered learning, we're building trust in the digital world.
-              </p>
+          <p className="mb-6 text-gray-700">
+            At CyberSafe, we&apos;re driven by a mission to empower families, educators, and individuals to stay safe online. Through engaging resources, expert guidance, and community-powered learning, we&apos;re building trust in the digital world.
+          </p>
         </MaxWidthWrapper>
       </section>
 

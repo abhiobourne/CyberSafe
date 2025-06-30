@@ -77,6 +77,7 @@ export default function NewsPage() {
                     article.url?.startsWith('http') ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'
                   }`}
                 >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={article.urlToImage || '/default-news.jpg'}
                     alt={article.title}
