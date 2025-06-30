@@ -1,102 +1,109 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 
-type Question = {
+export type Question = {
   question: string;
   options: string[];
   answer: string;
 };
 
-type QuizProps = {
-  questions: Question[];
-  type: "pre" | "post";
-  onSubmit?: (score: number) => void; // external handler
-};
+ interface QuizProps {
+   type: "pre" | "post";
+   difficulty: "easy" | "medium" | "hard";
+   questions: Question[];
+   timeLimit: number;             // in seconds
+  onFinish?: (score: number) => void; // optionally handle finish externally
+ }
 
-const QuizComponent = ({ questions = [], type, onSubmit }: QuizProps) => {
-  const [userAnswers, setUserAnswers] = useState<string[]>([]);
-  const [submitted, setSubmitted] = useState(false);
-  const [score, setScore] = useState(0);
+
+export default function QuizComponent({
+  type,
+  difficulty,
+  questions,
+  timeLimit,
+}: QuizProps) {
   const router = useRouter();
 
+  // state
+  const [answers, setAnswers] = useState<string[]>([]);
+  const [timer, setTimer] = useState(timeLimit);
+  const [submitted, setSubmitted] = useState(false);
+  const [score, setScore] = useState(0);
+
+  // reset helper
+  const resetQuiz = useCallback(() => {
+    setAnswers(Array(questions.length).fill(""));
+    setTimer(timeLimit);
+    setSubmitted(false);
+    setScore(0);
+  }, [questions.length, timeLimit]);
   useEffect(() => {
-    if (questions.length > 0 && userAnswers.length === 0) {
-      setUserAnswers(Array(questions.length).fill(""));
-    }
-  }, [questions, userAnswers.length]);
+    resetQuiz();
+    const id = setInterval(() => {
+      setTimer((t) => {
+        if (t <= 1) {
+          clearInterval(id);
+          submitQuiz();
+        }
+        return t - 1;
+      });
+    }, 1000);
+    return () => clearInterval(id);
+  }, [questions, timeLimit, resetQuiz]);
 
-  const handleSelect = (qIndex: number, option: string) => {
-    const newAnswers = [...userAnswers];
-    newAnswers[qIndex] = option;
-    setUserAnswers(newAnswers);
-  };
-
-  const calculateScore = () => {
-    let correct = 0;
-    userAnswers.forEach((ans, i) => {
-      if (ans === questions[i].answer) correct++;
+  // answer selection
+  const selectAnswer = (idx: number, opt: string) => {
+    setAnswers((a) => {
+      const c = [...a];
+      c[idx] = opt;
+      return c;
     });
-    return Math.round((correct / questions.length) * 100);
   };
 
-  const handleSubmit = () => {
+  // scoring
+  const calculateScore = () =>
+    questions.reduce((acc, q, i) => acc + (answers[i] === q.answer ? 1 : 0), 0);
+
+  // on submit
+  const submitQuiz = () => {
+    if (submitted) return;
     const result = calculateScore();
     setScore(result);
     setSubmitted(true);
-
-    // 🔁 Trigger external handler if provided
-    if (onSubmit) {
-      onSubmit(result);
-      return;
-    }
-
-    // 🧠 Default internal logic
-    if (type === "pre") {
-      localStorage.setItem("pre_score", result.toString());
-
-      setTimeout(() => {
-        if (result < 60) {
-          router.push("/article");
-        } else {
-          router.push("/post-assessment");
-        }
-      }, 2500);
-    }
-
-    if (type === "post") {
-      const pre = Number(localStorage.getItem("pre_score") || 0);
-      const improvement = result - pre;
-      alert(`You improved by ${improvement}%`);
-    }
   };
 
-  if (!questions || questions.length === 0) {
-    return <p className="text-center mt-20 text-gray-700">Loading quiz...</p>;
-  }
+  // advance helper
+  const handleAdvance = () => {
+    if (difficulty === "easy") router.push("/pre-assessment?level=medium");
+    else if (difficulty === "medium") router.push("/pre-assessment?level=hard");
+    else router.push("/");
+  };
 
   return (
-    <div className="w-full max-w-2xl mx-auto p-6 bg-white text-gray-900 rounded-xl shadow-lg mt-10">
-      <h1 className="text-2xl font-bold mb-6 text-center">
-        {type === "pre" ? "Pre-Assessment Quiz" : "Post-Assessment Quiz"}
+    <div className="bg-white text-black max-w-2xl mx-auto p-6 rounded-lg shadow mt-10">
+      <h1 className="text-2xl font-bold mb-2 text-center">
+        {type === "pre" ? "Pre‑Assessment" : "Post‑Assessment"} Quiz —{" "}
+        {difficulty[0].toUpperCase() + difficulty.slice(1)}
       </h1>
-
+      <p className="text-right text-red-600 mb-4">Time left: {timer}s</p>
+      
       {questions.map((q, i) => (
         <div key={i} className="mb-6">
-          <h3 className="font-semibold">
+          <h2 className="font-semibold mb-2">
             {i + 1}. {q.question}
-          </h3>
-          <div className="mt-2 space-y-2">
-            {q.options.map((opt, j) => (
-              <label key={j} className="block">
+          </h2>
+          <div className="space-y-2">
+            {q.options.map((opt) => (
+              <label key={opt} className="block">
                 <input
                   type="radio"
                   name={`q${i}`}
                   value={opt}
-                  checked={userAnswers[i] === opt}
-                  onChange={() => handleSelect(i, opt)}
                   disabled={submitted}
+                  checked={answers[i] === opt}
+                  onChange={() => selectAnswer(i, opt)}
                   className="mr-2"
                 />
                 {opt}
@@ -108,18 +115,48 @@ const QuizComponent = ({ questions = [], type, onSubmit }: QuizProps) => {
 
       {!submitted ? (
         <button
-          onClick={handleSubmit}
-          className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg mt-4"
+          onClick={submitQuiz}
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded"
         >
           Submit
         </button>
       ) : (
-        <p className="text-xl font-semibold text-center text-green-600 mt-6">
-          Your Score: {score}%
-        </p>
+        <div className="text-center">
+          <p className="text-xl font-semibold text-green-600">
+            {score >= 3
+              ? `🎉 Congrats! You scored ${score} / ${questions.length}`
+              : `You scored ${score} / ${questions.length}. Try again!`}
+          </p>
+
+          <div className="flex justify-center gap-4 mt-4">
+            {score >= 3 ? (
+              <>
+                <button
+                  onClick={handleAdvance}
+                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded"
+                >
+                  {difficulty !== "hard"
+                    ? `Go to ${difficulty === "easy" ? "Medium" : "Hard"}`
+                    : "Home"}
+                </button>
+                <button
+                  onClick={() => router.push("/")}
+                  className="px-4 py-2 bg-gray-300 hover:bg-gray-400 rounded"
+                >
+                  Home
+                </button>
+              </>
+            ) : (
+              <button
+                onClick={resetQuiz}
+                className="px-4 py-2 bg-gray-300 hover:bg-gray-400 rounded"
+              >
+                Retake Quiz
+              </button>
+            )}
+          </div>
+        </div>
       )}
     </div>
   );
-};
-
-export default QuizComponent;
+}

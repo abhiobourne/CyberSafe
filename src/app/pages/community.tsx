@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { useState } from "react";
-import QuizComponent from "../components/QuizComponent";
 
 type Question = {
   question: string;
@@ -42,9 +42,9 @@ export default function PreAssessmentPage() {
         </div>
       )}
 
-      {difficulty && questions && (
+      {/* {difficulty && questions && (
         <QuizComponent type="pre" questions={questions} />
-      )}
+      )} */}
     </div>
   );
 }
